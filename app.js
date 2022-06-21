@@ -47,8 +47,10 @@ class LKW extends Fahrzeug{
         return super.tags() + "LKW Ladung " + this.ladung;
     }
 }
-
+let lkw = [];
+let pkw = [];
 let fahrzeug = [];
+
 fahrzeug.push(new PKW("Audi", "A8", "Anthrazit", "Allrad", 12000, 4));
 fahrzeug.push(new PKW("BMW", "M3", "Weiß", "Heckantrieb", 85000, 5));
 fahrzeug.push(new PKW("Ford", "Focus", "Schwarz", "Frontantrieb", 35000, 5));
@@ -56,6 +58,17 @@ fahrzeug.push(new PKW("LADA", "Niva", "Rost", "Allrad", 18000, 57));
 fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
 fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
 fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
+
+
 
 fahrzeug.sort(function(a,b){return a.preis-b.preis});
 
@@ -68,57 +81,83 @@ function suche(){
         document.getElementById("infoLinks").innerHTML = ""; //Seite leer
         document.getElementById("infoRechts").innerHTML = ""; //Seite leer
         var such = document.getElementById("suche").value.toUpperCase();
-        for(let i = 0; i < fahrzeug.length; i++){
+        for(let i = 0; i < fahrzeug.length; i++){ 
             if(fahrzeug[i].tags().toUpperCase().includes(such)){
                 if(fahrzeug[i].constructor.name == "PKW"){
+                    pkw.push(fahrzeug[i]);
                     document.getElementById("infoLinks").innerHTML += fahrzeug[i].info();
                 } else if (fahrzeug[i].constructor.name == "LKW") {
+                    lkw.push(fahrzeug[i]);
                     document.getElementById("infoRechts").innerHTML += fahrzeug[i].info();
                 }
             }
         }
+        console.log(pkw);
+        console.log(lkw);
 }
-var seite = 1;
-var seitezahl = 2;
+
+//--------------------------------------------------------------------------------------------------
+var aktuelleSeite = 1;
+var seitenzahl = 2;
+
 function vorSeite(){
-    if(seite > 1 ){
-        seite--;
-        seiteWechseln(seite);
+    if(aktuelleSeite > 1 ){
+        aktuelleSeite--;
+        seiteWechseln(aktuelleSeite);
     }
 }
 
 function naechSeite(){
-    if(seite < numSeite()){
-        seite++;
-        seiteWechseln(seite);
+    if(aktuelleSeite < numPages()){
+        aktuelleSeite++;
+        seiteWechseln(aktuelleSeite);
     }
 }
-function seiteWechseln(){
+function seiteWechseln(seite){
     var btn_next = document.getElementById("btnNext");
     var btn_prev = document.getElementById("btnPrev");
-    var listing_table = document.getElementById("listingTable");
+    var listing_table1 = document.getElementById("listingTable1");
+    var listing_table2 = document.getElementById("listingTable2");
     var page_span = document.getElementById("page");
 
     // Validate page
-    if (page < 1) page = 1;
-    if (page > numPages()) page = numPages();
+    if (seite < 1) seite = 1;
+    if (seite > numPages()) seite = numPages();
 
-    listing_table.innerHTML = "";
+    listing_table1.innerHTML = "";
+    listing_table2.innerHTML = "";
 
-    for (var i = (page-1) * records_per_page; i < (page * records_per_page); i++) {
-        listing_table.innerHTML += objJson[i].adName + "<br>";
+    for (var i = (seite-1) * seitenzahl; i < (seite * seitenzahl); i++) {
+        //listing_table.innerHTML += fahrzeug[i].marke + "<br>";
+        var such = document.getElementById("suche").value.toUpperCase();
+            if(fahrzeug[i].tags().toUpperCase().includes(such)){
+                if(fahrzeug[i].constructor.name == "PKW"){
+                    listing_table1.innerHTML += fahrzeug[i].info();
+                } else if (fahrzeug[i].constructor.name == "LKW") {
+                    listing_table2.innerHTML += fahrzeug[i].info();
+                }
+            }
     }
-    page_span.innerHTML = page;
+    page_span.innerHTML = seite;
 
-    if (page == 1) {
+    if (seite == 1) {
         btn_prev.style.visibility = "hidden";
     } else {
         btn_prev.style.visibility = "visible";
     }
 
-    if (page == numPages()) {
+    if (seite == numPages()) {
         btn_next.style.visibility = "hidden";
     } else {
         btn_next.style.visibility = "visible";
     }
 }
+
+function numPages()
+{
+    return Math.ceil(fahrzeug.length / seitenzahl);
+}
+
+window.onload = function() {
+    seiteWechseln(1);
+};
