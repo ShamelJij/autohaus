@@ -131,8 +131,17 @@ function seiteWechseln(seite){
         //listing_table.innerHTML += fahrzeug[i].marke + "<br>";
         var such = document.getElementById("suche").value.toUpperCase();
             if(fahrzeug[i].tags().toUpperCase().includes(such)){
+                if(pkw[i] === undefined && lkw[i] === undefined){
+                    console.log("both are null");
+                } else if(pkw[i] === undefined){
+                    listing_table2.innerHTML += lkw[i].info();
+                }
+                else if(lkw[i] === undefined){
+                    listing_table1.innerHTML += pkw[i].info();
+                } else {
                     listing_table1.innerHTML += pkw[i].info();
                     listing_table2.innerHTML += lkw[i].info();
+                }
             }
     }
     page_span.innerHTML = seite;
