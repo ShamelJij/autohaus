@@ -12,12 +12,24 @@
   </head>
   <body>
     <h1 class="container text-center p-3">Autohaus</h1>
+    <div class="container">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">&#128269;</span>
+            </div>
+            <input type="text" class="form-control" placeholder="suchen!" aria-label="Suche" aria-describedby="basic-addon1" id="suche" oninput="suche()">
+          </div>
+    </div>
     <div class="container-fluid">
-        <div class="row" id="info"></div>
+        <div class="row">
+            <div class="row p-2" id="infoLinks"></div>
+            <hr>
+            <div class="row p-2" id="infoRechts"></div>
+        </div>
     </div>
 
     <!-- JavaScript -->
-    <script src="app.js"></script>
+    <script type="text/javascript" src="app.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
