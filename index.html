@@ -12,21 +12,35 @@
   </head>
   <body>
     <h1 class="container text-center p-3">Autohaus</h1>
-    <div class="container">
+    <div class="container  w-25">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">&#128269;</span>
             </div>
-            <input type="text" class="form-control" placeholder="suchen!" aria-label="Suche" aria-describedby="basic-addon1" id="suche" oninput="suche()">
+            <input type="text" class="form-control" placeholder="suchen!?" aria-label="Suche" aria-describedby="basic-addon1" id="suche" oninput="suche()">
           </div>
     </div>
-    <div class="container-fluid">
+    <div class="container pb-2">
         <div class="row">
-            <div class="row p-2" id="infoLinks"></div>
-            <hr>
-            <div class="row p-2" id="infoRechts"></div>
+            <div class="col">
+                <h3 class="text-center p-2 text-info">PWK</h3>
+                <hr class="w-25">
+                <div class="row justify-content-around m-1" id="infoLinks"></div>
+            </div>
+            <div class="col">
+                <h3 class="text-center p-2 text-success">LWK</h3>
+                <hr class="w-25">
+                <div class="row justify-content-around m-1" id="infoRechts"></div>
+            </div>
         </div>
     </div>
+    <hr class="w-50">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination d-flex justify-content-center p-3">
+            <li class="page-item"><a class="page-link" href="javascript:vorPage()" id="btnPrev">Vorherige Seite</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:naechPage()" id="btnNext">Nächste Seite</a></li>
+        </ul>
+    </nav>
 
     <!-- JavaScript -->
     <script type="text/javascript" src="app.js"></script>
