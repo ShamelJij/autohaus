@@ -22,10 +22,3 @@ fahrzeug.push(fahrzeug2);
 
 document.getElementById("info").innerHTML= fahrzeug1.info();
 document.getElementById("info").innerHTML += fahrzeug2.info();  
-document.getElementById("info").innerHTML += fahrzeug2.info();  
-document.getElementById("info").innerHTML += fahrzeug2.info();  
-document.getElementById("info").innerHTML += fahrzeug2.info();  
-document.getElementById("info").innerHTML += fahrzeug2.info();  
-document.getElementById("info").innerHTML += fahrzeug2.info();  
-document.getElementById("info").innerHTML += fahrzeug2.info();  
-document.getElementById("info").innerHTML += fahrzeug2.info();  
