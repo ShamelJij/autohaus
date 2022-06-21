@@ -56,17 +56,17 @@ fahrzeug.push(new PKW("BMW", "M3", "Weiß", "Heckantrieb", 85000, 5));
 fahrzeug.push(new PKW("Ford", "Focus", "Schwarz", "Frontantrieb", 35000, 5));
 fahrzeug.push(new PKW("LADA", "Niva", "Rost", "Allrad", 18000, 57));
 fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
-fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
-fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
-fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
-fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
-fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
-fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
-fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
-fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
-fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
-fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
-fahrzeug.push(new LKW("Volvo", "FH", "Grün", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Bergmann", "FH", "Braun", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Daimler", "FH", "Weiß", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Goldhofer", "FH", "Hellgrau", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("MAN", "FH", "Stahlblau", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Neoplan", "FH", "Silber", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Ruthmann", "FH", "Mais", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Schmitz", "FH", "Gelb", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Tadano", "FH", "Peru", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Titan", "FH", "Rosa", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("VW", "FH", "Orchidee", "Frontantrieb", 650000, 85));
+fahrzeug.push(new LKW("Heineke", "FH", "Blau", "Frontantrieb", 650000, 85));
 
 
 
@@ -81,7 +81,7 @@ function suche(){
         document.getElementById("infoLinks").innerHTML = ""; //Seite leer
         document.getElementById("infoRechts").innerHTML = ""; //Seite leer
         var such = document.getElementById("suche").value.toUpperCase();
-        for(let i = 0; i < fahrzeug.length; i++){ 
+        for(let i = 0; i < fahrzeug.length; i++){
             if(fahrzeug[i].tags().toUpperCase().includes(such)){
                 if(fahrzeug[i].constructor.name == "PKW"){
                     pkw.push(fahrzeug[i]);
@@ -131,11 +131,8 @@ function seiteWechseln(seite){
         //listing_table.innerHTML += fahrzeug[i].marke + "<br>";
         var such = document.getElementById("suche").value.toUpperCase();
             if(fahrzeug[i].tags().toUpperCase().includes(such)){
-                if(fahrzeug[i].constructor.name == "PKW"){
-                    listing_table1.innerHTML += fahrzeug[i].info();
-                } else if (fahrzeug[i].constructor.name == "LKW") {
-                    listing_table2.innerHTML += fahrzeug[i].info();
-                }
+                    listing_table1.innerHTML += pkw[i].info();
+                    listing_table2.innerHTML += lkw[i].info();
             }
     }
     page_span.innerHTML = seite;
