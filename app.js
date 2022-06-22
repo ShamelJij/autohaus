@@ -68,8 +68,6 @@ fahrzeug.push(new LKW("Titan", "FH", "Rosa", "Frontantrieb", 650000, 85));
 fahrzeug.push(new LKW("VW", "FH", "Orchidee", "Frontantrieb", 650000, 85));
 fahrzeug.push(new LKW("Heineke", "FH", "Blau", "Frontantrieb", 650000, 85));
 
-
-
 fahrzeug.sort(function(a,b){return a.preis-b.preis});
 
 document.getElementById("suche").value = localStorage.getItem("begriff");
@@ -113,12 +111,14 @@ function naechSeite(){
         seiteWechseln(aktuelleSeite);
     }
 }
+
 function seiteWechseln(seite){
     var btn_next = document.getElementById("btnNext");
     var btn_prev = document.getElementById("btnPrev");
-    var listing_table1 = document.getElementById("listingTable1");
-    var listing_table2 = document.getElementById("listingTable2");
+    var listing_table1 = document.getElementById("infoLinks");
+    var listing_table2 = document.getElementById("infoRechts");
     var page_span = document.getElementById("page");
+    var all_pages = document.getElementById("allpages");
 
     // Validate page
     if (seite < 1) seite = 1;
@@ -157,10 +157,18 @@ function seiteWechseln(seite){
     } else {
         btn_next.style.visibility = "visible";
     }
+
+    all_pages.innerHTML = numPages();
 }
 
 function numPages()
 {
+    if(lkw > pkw){
+        fahrzeug.length = lkw.length;
+    } else {
+        fahrzeug.length = pkw.length;
+    }
+    console.log("else: ", fahrzeug.length);
     return Math.ceil(fahrzeug.length / seitenzahl);
 }
 

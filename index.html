@@ -36,9 +36,11 @@
     </div>
     <hr class="w-50">
     <nav aria-label="Page navigation example">
-        <ul class="pagination d-flex justify-content-around p-3">
+        <ul class="pagination justify-content-around p-3">
             <li class="page-item"><a class="page-link" href="javascript:vorSeite()" id="btnPrev">Vorherige Seite</a></li>
-            <li class="page-item"><p class="page-link text-primary h5" id="page"></p></li>
+            <li class="page-item"><p class="h5" id="page"></p></li>
+            <li class="page-item h5">von</li>
+            <li class="page-item"><p class="h5" id="allpages"></p></li>
             <li class="page-item"><a class="page-link" href="javascript:naechSeite()" id="btnNext">Nächste Seite</a></li>
         </ul>
     </nav>
@@ -46,7 +48,6 @@
         <div class="col" id="listingTable1"></div>
         <div class="col" id="listingTable2"></div>
     </div>
-    
 
     <!-- JavaScript -->
     <script type="text/javascript" src="app.js"></script>
